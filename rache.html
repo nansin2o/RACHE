@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地獄之復仇沸騰在我心中</title>
+    <script>
+        function initMap() {
+            // 初始化地图的代码
+        }
+        </script>
+    <script src="https://google-map-api.balafun.workers.dev/"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 25.04737459457973, lng: 121.52316981349117},
+                zoom: 13,
+                styles: [ 
+                {
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#610000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#7B7B7B"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "	#610000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {                                
+                                "lightness": "-10"
+                            } 
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {                                
+                                "gamma": "0.1"
+                            } 
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#7B7B7B"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#272727"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    }
+                 ]
+            });
+
+            var scheduledTime = new Date("2023-12-30T22:30:00");
+            var currentTime = new Date();
+            var timeDifference = scheduledTime - currentTime;
+
+            if (timeDifference > 0) {
+                setTimeout(function() {
+                    addMarker(map, {lat: 25.074930212795365, lng: 121.52316981349117});
+                }, timeDifference);
+            } else {
+                addMarker(map, {lat: 25.074930212795365, lng: 121.52316981349117});
+            }
+        }
+
+        function addMarker(map, position) {
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: '點擊進入復仇的入口',
+                clickable: true,
+                icon: {
+                    url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                    scaledSize: new google.maps.Size(40, 40)
+                },
+                animation: google.maps.Animation.BOUNCE
+            });
+
+            marker.addListener('click', function() {
+                navigateToDestination(position);
+            });
+        }
+
+        function navigateToDestination(destination) {
+    var url = 'https://www.google.com/maps/dir/?api=1&destination=' + destination.lat + ',' + destination.lng;
+    window.location.href = url; // 更改當前窗口的 URL
+
+}
+    </script>
+</body>
+</html>
